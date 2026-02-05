@@ -1,5 +1,15 @@
 {
-  "image": "ghcr.io/atym-io/atym-toolchain/atym-toolchain:latest",
+  "name": "Atym Toolchain",
+  "build": {
+    "dockerfile": "Dockerfile",
+    "target": "atym-dev",
+    "args": {
+      "USERNAME": "${localEnv:USER}",
+      "USER_UID": "${localEnv:REMOTE_UID:1000}",
+      "USER_GID": "${localEnv:REMOTE_GID:1000}"
+    },
+  },
+  "remoteUser": "${localEnv:USER}",
   "customizations": {
     "vscode": {
       "extensions": [
